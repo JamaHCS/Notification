@@ -1,0 +1,114 @@
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #204E69;
+  font-size: 16px;
+}
+
+.notification {
+  color: #fff;
+  width: 50px;
+  /* height: inherit; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -2px;
+  right: -2px;
+}
+.notification.animated::before{
+  animation: bells 1s;
+  animation-iteration-count: 1;
+  transform-origin: center top;
+
+}
+.notification::before {
+  content: "\f0f3";
+  /* font-size: 1.5em */
+  font-family: "Font Awesome 5 Free";
+  display: block;
+  /* position: relative; */
+}
+
+.notification::after {
+  content: attr(data-count);
+  font-size: 11px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  background: #ff4600;
+  border-radius: 50%;
+  font-family: Arial;
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  opacity: 0;
+  transition: .3s;
+  transform: scale(.5);
+  will-change: opacity, transform;
+}
+
+.notification.show-count::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.btn {
+  font-size: 16px;
+  padding: .5em 1em;
+  background: #46baec;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  /* margin: .8em; */
+  cursor: pointer;
+  outline: 0;
+  transition: background transform color;
+  transition-duration: .3s;
+}
+
+.btn:active {
+  background: #a3b5e0;
+  transform: scale(.9);
+  /* color: black; */
+}
+
+@keyframes bells {
+  0% {
+    transform: rotate(45deg);
+  }
+
+
+  25% {
+    transform: rotate(-35deg);
+  }
+
+  37% {
+    transform: rotate(25deg);
+  }
+
+  50% {
+    transform: rotate(-20deg);
+  }
+
+  62% {
+    transform: rotate(15deg);
+  }
+
+  75% {
+    transform: rotate(-10deg);
+  }
+
+  87% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
